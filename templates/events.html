@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+    {% block content %}
+
+    <ul class="collapsible popout" data-collapsible="accordion">
+        {% for event in events %}
+        <li>
+        <div class="collapsible-header"><i class="material-icons">expand_more</i>
+        <strong>{{event.name}} </strong> - {{event.type}} - {{event.distance}} - {{event.cost}}
+        </div>
+        <div class="collapsible-body">
+            <span>
+            {{event.location}} - {{event.date}} - {{event.difficulty}} <br><br>
+            {{event.description}}<br><br>
+            {{event.link}}
+            </span>
+        </div>
+        </li>
+        {% endfor %}
+
+    </ul>
+
+    {% endblock %}
+
