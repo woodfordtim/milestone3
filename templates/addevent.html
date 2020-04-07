@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add an Event</h3>
+
+<div class="row">
+	<form action=" " method="POST" class="col s12">
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">emoji_events</i>
+				<input placeholder="Event Name" id="event_name" type="text" class="validate">
+				<label for="event_name">Event Name</label>
+			</div>
+		</div>
+		<div class="row">
+		    <div class="input-field col s12">
+                <i class="material-icons prefix">category</i>
+				<select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+				<label>Event Type</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">directions_bike</i>
+				<select id="distance" name="event_type">
+                    <option value="" disabled selected>Distance</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+				<label>Distance</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">euro</i>
+				<input placeholder="Cost" id="cost" type="text" class="validate">
+				<label for="cost">Cost of participation</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">event</i>
+				<input type="text" id="date" class="datepicker">
+				<label for="date">Date of Event</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">add_location</i>
+				<input placeholder="Location" id="location" type="text" class="validate">
+				<label for="location">Location</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">insert_link</i>
+				<input placeholder="https://" id="link" type="text" class="validate">
+				<label for="link">Link to Event Website</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">mail</i>
+				<input placeholder="email" id="contact" type="email" class="validate">
+				<label for="contact">Contact Email</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">details</i>
+				<textarea name="Description of Event" id="description" class="materialize-textarea"></textarea>
+				<label for="description">Description of Event</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<p class="range-field">
+					<input type="range" id="test5" min="0" max="10">
+                </p>
+					<label for="difficulty">Difficulty</label>
+			</div>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

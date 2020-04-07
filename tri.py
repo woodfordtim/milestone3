@@ -12,19 +12,16 @@ if path.exists("env.py"):
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGODB_NAME"] = os.environ.get('MONGODB_NAME')
 
-
 mongo = PyMongo(app)
-
 
 @app.route('/')
 @app.route('/find_events')
 def find_events():
-    # events=mongo.db.events.find()
-    # print(events)
     return render_template("events.html", events=mongo.db.events.find())
 
-    # sorry, messing with the code, but I see what you're doing now. I still can't see where the 'event.'
-    # refers to in the html. It's not clear in the lesson back in the mini-project.
+@app.route('/add_event')
+def add_event():
+    return render_template('addevent.html')
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
