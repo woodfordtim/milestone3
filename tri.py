@@ -21,7 +21,8 @@ def find_events():
 
 @app.route('/add_event')
 def add_event():
-    return render_template('addevent.html')
+    return render_template('addevent.html', 
+    event_type=mongo.db.event_type.find()) # event_type refers to Collection so must be accurate
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

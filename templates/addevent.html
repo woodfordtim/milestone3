@@ -14,11 +14,11 @@
 		<div class="row">
 		    <div class="input-field col s12">
                 <i class="material-icons prefix">category</i>
-				<select>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+				<select id="event_type" name="event_type">
+                    <option value="" disabled selected>Choose event type</option>
+                    {% for event in event_type %}
+                    <option value="{{event.event_type}}"> {{event.event_type}}</option>
+                    {% endfor %}
                 </select>
 				<label>Event Type</label>
 			</div>
@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">directions_bike</i>
-				<select id="distance" name="event_type">
+				<select id="distance" name="distance">
                     <option value="" disabled selected>Distance</option>
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
