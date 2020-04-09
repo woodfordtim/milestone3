@@ -3,7 +3,7 @@
 <h3>Add an Event</h3>
 
 <div class="row">
-	<form action=" " method="POST" class="col s12">
+	<form action="{{ url_for('create_event')}} " method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">emoji_events</i>
@@ -12,8 +12,8 @@
 			</div>
 		</div>
 		<div class="row">
-		    <div class="input-field col s12">
-                <i class="material-icons prefix">category</i>
+			<div class="input-field col s12">
+				<i class="material-icons prefix">category</i>
 				<select id="event_type" name="event_type">
                     <option value="" disabled selected>Choose event type</option>
                     {% for event in event_type %}
@@ -85,6 +85,12 @@
 					<label for="difficulty">Difficulty</label>
 			</div>
 		</div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Create Event
+                <i class="material-icons right">emoji_events</i>
+            </button>
+        </div>
+		
 	</form>
 </div>
 
