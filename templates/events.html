@@ -1,23 +1,30 @@
 {% extends 'base.html' %}
     {% block content %}
 
-    <ul class="collapsible popout" data-collapsible="accordion">
+    <div class="row">
+        <ul class="collapsible popout" data-collapsible="accordion">
         {% for event in events %}
-        <li>
-        <div class="collapsible-header"><i class="material-icons">expand_more</i>
-        <strong>{{event.event_name}} </strong> - {{event.event_type}} - {{event.event_distance}} - {{event.cost}}
-        </div>
-        <div class="collapsible-body">
-            <span>
-            {{event.location}} - {{event.date}} - {{event.difficulty}} <br><br>
-            {{event.description}}<br><br>
-            {{event.link}}
-            </span>
-        </div>
-        </li>
+            <li>
+                <div class="collapsible-header">
+                    <div class="col s3">
+                        <i class="material-icons">expand_more</i>
+                        <a class="waves-effect waves-light btn btn_small red">Done</a>
+                        <a href="{{url_for('edit_event', event_id=event._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                    </div>
+                    <div class="task_header col s9">
+                        <strong>{{event.event_name}} </strong> - {{event.event_type}} - {{event.event_distance}} - {{event.cost}}
+                    </div>
+                </div>
+                <div class="collapsible-body">
+                    <span>
+                    {{event.location}} - {{event.date}} - {{event.difficulty}} <br><br>
+                    {{event.description}}<br><br>
+                    {{event.link}}
+                    </span>
+                </div>
+            </li>
         {% endfor %}
-
-    </ul>
-
+        </ul>
+    </div>
     {% endblock %}
 

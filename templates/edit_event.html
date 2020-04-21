@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add an Event</h3>
+<h3>Edit an Event</h3>
 
 <div class="row">
-	<form action="{{ url_for('create_event')}} " method="POST" class="col s12">
+	<form action="{{ url_for('edit_event', event_id=event._id)}} " method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">emoji_events</i>
-				<input placeholder="Event Name" id="event_name" type="text" class="validate">
+				<input placeholder="Event Name" id="event_name" type="text" class="validate" value="{{event.event_name}}">
 				<label for="event_name">Event Name</label>
 			</div>
 		</div>
@@ -17,7 +17,12 @@
 				<select id="event_type" name="event_type">
                     <option value="" disabled selected>Choose event type</option>
                     {% for event in event_type %}
-                    <option value="{{event.event_type}}"> {{event.event_type}}</option>
+                        {% if event.event_type == event.event_type %}
+                            <option value="{{event.event_type}}" selected > {{event.event_type}}</option>
+                            {% else %}
+                            <option value="{{event.event_type}}"> {{event.event_type}}</option>
+                        {% endif %}
+
                     {% endfor %}
                 </select>
 				<label>Event Type</label>
@@ -73,7 +78,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
-				<textarea name="Description of Event" id="description" class="materialize-textarea"></textarea>
+				<textarea name="Description of Event" id="description" class="materialize-textarea">{{event.event_name}}</textarea>
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
@@ -86,7 +91,7 @@
 			</div>
 		</div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Create Event
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Event
                 <i class="material-icons right">emoji_events</i>
             </button>
         </div>
