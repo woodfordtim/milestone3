@@ -63,6 +63,24 @@ def delete_event(event_id):
     mongo.db.events.remove({'_id': ObjectId(event_id)})
     return redirect(url_for('find_events'))
 
+@app.route('/find_event_type')
+def find_event_type():
+    return render_template('event_type.html', 
+                            event_types=mongo.db.event_type.find()) #event_types refers to for loop (?)
+
+@app.route('/edit_event_type/<event_type_id>')
+def edit_event_type(event_type_id): #event_type_id as a parameter to search for document in db to feed edit into form
+    return render_template('edit_event_type.html',
+                            event_type=mongo.db.event_type.find_one(
+                            {'_id': ObjectId(event_type_id)}))
+
+@app.route('/update_event_type/<event_type_id>', methods=['POST'])
+def update_event_type(event_type_id):
+    mongo.db.event_type.update({'id': ObjectId(event_type_id)},
+        {'event_type': request.form.get('event_type')})
+    return redirect(url_for('find_event_type'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
