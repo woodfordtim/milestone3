@@ -3,20 +3,19 @@
 <h3>Edit an Event Type</h3>
 
 <div class="row">
-	<form action="{{ url_for('update_event_type', event_type_id=event_type._id)}} " method="POST" class="col s12">
+	<form action="{{ url_for('update_sport', sports_id=sports._id)}} " method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<input id="event_type" type="text" class="validate" value="{{event_type.event_type}}">
-				<label for="event_type">Event Type</label>
+				<input id="sport_name" type="text" class="validate" name="sport_name" value="{{sport.sport_name}}">
+				<label for="sports">Sports</label>
 			</div>
 		</div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Event Type
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Sports
                 <i class="material-icons right">category</i>
             </button>
         </div>
-		
 	</form>
 </div>
 

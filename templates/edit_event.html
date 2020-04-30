@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">emoji_events</i>
-				<input placeholder="Event Name" id="event_name" type="text" class="validate" value="{{event.event_name}}">
+				<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate" value="{{event.event_name}}">
 				<label for="event_name">Event Name</label>
 			</div>
 		</div>
@@ -43,35 +43,35 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">euro</i>
-				<input placeholder="Cost" id="cost" type="text" class="validate">
+				<input placeholder="Cost" id="cost" name="cost" type="text" class="validate">
 				<label for="cost">Cost of participation</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">event</i>
-				<input type="text" id="date" class="datepicker">
+				<input type="text" id="date" name="event_date" class="datepicker">
 				<label for="date">Date of Event</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" type="text" class="validate">
+				<input placeholder="Location" id="location" name="location" type="text" class="validate">
 				<label for="location">Location</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">insert_link</i>
-				<input placeholder="https://" id="link" type="text" class="validate">
+				<input placeholder="https://" id="link" name="link" type="text" class="validate">
 				<label for="link">Link to Event Website</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">mail</i>
-				<input placeholder="email" id="contact" type="email" class="validate">
+				<input placeholder="email" id="contact" name="contact" type="email" class="validate">
 				<label for="contact">Contact Email</label>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<p class="range-field">
-					<input type="range" id="test5" min="0" max="10">
+					<input type="range" id="test5" name="difficulty" min="0" max="10">
                 </p>
 					<label for="difficulty">Difficulty</label>
 			</div>

@@ -14,43 +14,45 @@ app.config["MONGODB_NAME"] = os.environ.get('MONGODB_NAME')
 
 mongo = PyMongo(app)
 
-# function for page to list all events
+# function for page to display a list all events
 @app.route('/')
 @app.route('/find_events')
 def find_events():
-    return render_template("events.html", events=mongo.db.events.find())
+    return render_template("events.html", 
+                            events=mongo.db.events.find())
 
 
 # function for form to add events
 @app.route('/add_event')
 def add_event():
     return render_template('add_event.html', 
-    events=mongo.db.events.find()) # event_type refers to Collection so must be accurate
+    sports=mongo.db.sports.find()) # event_type refers to Collection so must be accurate
 
 
-# function to sumbit a form http method POST - default is GET
+# function to sumbit a new event to form http method POST (default is GET) and create a new event
 @app.route('/create_event', methods=['POST'])
 def create_event():
     events=mongo.db.events
+    print(request.form.to_dict())
     events.insert_one(request.form.to_dict()) #insert when you submit info to a uri it does so in a request object and then convert the form to dictionary so it can be understood by MongoDB
-    return redirect(url_for('/find_events'))
+    return redirect(url_for('find_events')) #redirect back to list of events page
 
-
+# function to enable user to edit event
 @app.route('/edit_event/<event_id>')
 def edit_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
-    all_event_type = mongo.db.event_type.find()
+    all_event_type = mongo.db.sports.find()
     return render_template('edit_event.html', event=the_event, event_type=all_event_type)
 
-
+# function to send edited data back to MongoDB and update database
 @app.route('/update_event/<event_id>', methods=['POST']) 
 def update_event(event_id):
     events = mongo.db.events
     events.update( {'_id': ObjectId(event_id)},
     {
         'event_name': request.form.get('event_name'),
-        'event_type': request.form.get('event_type'),
-        'event_distance': request.form.get('event_distance'),
+        'sports': request.form.get('sports'),
+        'distance': request.form.get('distance'),
         'cost': request.form.get('cost'),
         'difficulty': request.form.get('difficulty'),
         'location_url': request.form.get('location_url'),
@@ -60,53 +62,55 @@ def update_event(event_id):
         'author': request.form.get('author'),
         'link': request.form.get('link')
     })
-    return redirect(url_for('find_events'))
+    return redirect(url_for('find_events')) #redirect back to list of events page
 
-
+# function allow deletion of events
 @app.route('/delete_event/<event_id>')
 def delete_event(event_id):
     mongo.db.events.remove({'_id': ObjectId(event_id)})
-    return redirect(url_for('find_events'))
+    return redirect(url_for('find_events')) #redirect back to list of events page
+    
+
+# function for page to display list all event types (i.e categories)
+@app.route('/find_sports')
+def find_sports():
+    return render_template('sports.html', 
+                            sports=mongo.db.sports.find()) #sports refers to for collection
+
+# function take the user to editable page (a form)
+@app.route('/edit_sport/<sports_id>') #'url for' points towards the name of a function, not the name of the route
+def edit_sport(sports_id): # sports_id as a parameter to search for document in db to feed edit into form
+    return render_template('edit_sport.html',
+                            sports=mongo.db.sports.find_one( #should there be an s in eventtypes... or not?
+                            {'_id': ObjectId(sports_id)}))
 
 
-@app.route('/find_event_type')
-def find_event_type():
-    return render_template('event_type.html', 
-                            event_types=mongo.db.event_type.find()) #event_types refers to for loop (?)
+# update is used to carry out the update to the database
+@app.route('/update_sport/<sports_id>', methods=['POST'])
+def update_sport(sports_id):
+    mongo.db.sports.update({'id': ObjectId(sports_id)},
+        {'sports': request.form.get('sports')})
+    return redirect(url_for('find_sports'))
 
 
-@app.route('/edit_event_type/<event_type_id>')
-def edit_event_type(event_type_id): #event_type_id as a parameter to search for document in db to feed edit into form
-    return render_template('edit_event_type.html',
-                            event_types=mongo.db.event_type.find_one( #should there be an s in eventtypes... or not?
-                            {'_id': ObjectId(event_type_id)}))
+@app.route('/delete_sport/<sports_id>')
+def delete_sport(sport_id):
+    mongo.db.event_type.remove({'_id': ObjectId(sports_id)})
+    return redirect(url_for('find_sports'))
 
 
-@app.route('/update_event_type/<event_type_id>', methods=['POST'])
-def update_event_type(event_type_id):
-    mongo.db.event_type.update({'id': ObjectId(event_type_id)},
-        {'event_type': request.form.get('event_type')})
-    return redirect(url_for('find_event_type'))
+@app.route('/insert_sport', methods=['POST'])
+def insert_sport():
+    sports=mongo.db.sports #access the mongo DB
+    sports_doc = {'sports': request.form.get('sport')} #'sports' refers to form field
+    mongo.db.event_type.insert_one(sports_doc) #inserts new event type to data collection
+    return redirect(url_for('find_sports')) #redirects back to list of event_types
 
 
-@app.route('/delete_event_type/<event_type_id>')
-def delete_event_type(event_type_id):
-    mongo.db.event_type.remove({'_id': ObjectId(event_type_id)})
-    return redirect(url_for('find_event_type'))
-
-
-@app.route('/insert_event_type', methods=['POST'])
-def insert_event_type():
-    event_type=mongo.db.event_type #access the mongo DB
-    event_type_doc = {'event_type': request.form.get('event_type')} #'event_type' refers to form field
-    mongo.db.event_type.insert_one(event_type_doc) #inserts new event type to data collection
-    return redirect(url_for('find_event_type')) #redirects back to list of event_types
-
-
-# function to direct us and render the view that allows us to insert event_type
-@app.route('/create_event_type')
-def add_event_type():
-    return render_template('add_event_type.html')
+# function to direct us and render the view that allows us to insert sport
+@app.route('/new_sport')
+def new_sport():
+    return render_template('add_sport.html')
 
 
 if __name__ == '__main__':

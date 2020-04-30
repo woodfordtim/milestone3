@@ -3,27 +3,27 @@
 <h3>Add an Event</h3>
 
 <div class="row">
-	<form action="{{ url_for('create_event')}} " methods="POST" class="col s12">
+	<form action="{{ url_for('create_event')}}" method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">emoji_events</i>
-				<input placeholder="Event Name" id="event_name" type="text" class="validate">
+				<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate">
 				<label for="event_name">Event Name</label>
 			</div>
 		</div>
-		<div class="row">
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<select id="event_type" name="event_type">
-                    <option value="" disabled selected>Choose event type</option>
-                    {% for event in event_type %}
-                    <option value="{{event.event_type}}"> {{event.event_type}}</option>
+				<select id="sports" name="sport_name">
+                    <option value="" disabled selected>Choose Sport</option>
+                    {% for sport in sports %}
+                    <option value="{{sport.sport_name}}"> {{sport.sport_name}}</option>
                     {% endfor %}
                 </select>
-				<label>Event Type</label>
+				<label>Sports</label>
 			</div>
-		</div>
-		<div class="row">
+        </div>
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">directions_bike</i>
 				<select id="event_distance" name="event_distance">
@@ -34,62 +34,54 @@
                 </select>
 				<label>Distance</label>
 			</div>
-		</div>
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">euro</i>
-				<input placeholder="Cost" id="cost" type="text" class="validate">
-				<label for="cost">Cost of participation</label>
-			</div>
-		</div>
-		<div class="row">
+        </div>
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">event</i>
-				<input type="text" id="date" class="datepicker">
-				<label for="date">Date of Event</label>
+				<input type="text" id="event_date" class="datepicker">
+				<label for="event_date">Date of Event</label>
 			</div>
 		</div>
-		<div class="row">
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" type="text" class="validate">
-				<label for="location">Location</label>
+				<input placeholder="Location" id="location_url" type="text" class="validate">
+				<label for="location_url">Location</label>
 			</div>
 		</div>
-		<div class="row">
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">insert_link</i>
 				<input placeholder="https://" id="link" type="text" class="validate">
 				<label for="link">Link to Event Website</label>
 			</div>
 		</div>
-		<div class="row">
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">mail</i>
-				<input placeholder="email" id="contact" type="email" class="validate">
-				<label for="contact">Contact Email</label>
+				<input placeholder="email" id="event_contacts" type="email" class="validate">
+				<label for="event_contact">Contact Email</label>
 			</div>
 		</div>
-		<div class="row">
+        <div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
 				<textarea name="Description of Event" id="description" class="materialize-textarea"></textarea>
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
-		<div class="row">
+        	<div class="row">
 			<div class="input-field col s12">
-				<p class="range-field">
-					<input type="range" id="test5" min="0" max="10">
-                </p>
-					<label for="difficulty">Difficulty</label>
+				<p class="range-field"><input type="range" id="test5" min="0" max="10"></p>
+				<label for="difficulty">Difficulty</label>
 			</div>
 		</div>
+        
         <div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">event</i>
-				<input type="text" id="last_updated" class="datepicker">
-				<label for="date">Last Updated</label>
+				<i class="material-icons prefix">euro</i>
+				<input placeholder="Cost" id="cost" name="cost" type="text" class="validate">
+				<label for="cost">Cost of participation</label>
 			</div>
 		</div>
         <div class="row">
@@ -97,7 +89,6 @@
                 <i class="material-icons right">emoji_events</i>
             </button>
         </div>
-		
 	</form>
 </div>
 

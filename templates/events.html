@@ -3,6 +3,7 @@
 
     <div class="row">
         <ul class="collapsible popout" data-collapsible="accordion">
+       <!-- Tempating language to loop through events in our events collection-->
         {% for event in events %}
             <li>
                 <div class="collapsible-header">
@@ -11,16 +12,9 @@
                         <a href="{{url_for('edit_event', event_id=event._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                         <a href="{{url_for('delete_event', event_id=event._id)}}" class="waves-effect waves-light btn btn_small red">Del</a>
                     </div>
-                    <div class="task_header col s9">
-                        <strong>{{event.event_name}} </strong> - {{event.event_type}} - {{event.event_distance}} - {{event.cost}}
+                    <div class="event_header col s9">
+                        <strong>{{event.event_name}}  -  </strong>{{event.sports}}  -  {{event.cost}}
                     </div>
-                </div>
-                <div class="collapsible-body">
-                    <span>
-                    {{event.location}} - {{event.date}} - {{event.difficulty}} <br><br>
-                    {{event.description}}<br><br>
-                    {{event.link}}
-                    </span>
                 </div>
             </li>
         {% endfor %}
