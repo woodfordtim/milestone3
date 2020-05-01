@@ -14,18 +14,18 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<select id="event_type" name="event_type">
+				<select id="sports" name="sports">
                     <option value="" disabled selected>Choose event type</option>
-                    {% for event in event_type %}
-                        {% if event.event_type == event.event_type %}
-                            <option value="{{event.event_type}}" selected > {{event.event_type}}</option>
+                    {% for event in sports%}
+                        {% if event.sports== event.sports %}
+                            <option value="{{event.sports}}" selected > {{event.sports}}</option>
                             {% else %}
-                            <option value="{{event.event_type}}"> {{event.event_type}}</option>
+                            <option value="{{event.sports}}"> {{event.sports}}</option>
                         {% endif %}
 
                     {% endfor %}
                 </select>
-				<label>Event Type</label>
+				<label>Sport</label>
 			</div>
 		</div>
 		<div class="row">

@@ -3,17 +3,17 @@
 <h3>Add an Event Type</h3>
 
 <div class="row">
-	<form action="{{ url_for('insert_event_type')}} "method="POST" class="col s12">
+	<form action="{{ url_for('insert_sport')}} "method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<input id="event_type" name="event_type" type="text" class="validate">
-				<label for="event_type">Event Type</label>
+				<input id="sport_name" name="sport_name" type="text" class="validate">
+				<label for="sport_name">Sports</label>
 			</div>
 		</div>
         <div class="row">
-        <a href="{{url_for('new_event_type')}}" class="btn waves-effect waves-light">
-                <i class="material-icons right">category</i>Add Event Type</a>
+        <a href="{{url_for('new_sport')}}" class="btn waves-effect waves-light">
+                <i class="material-icons right">category</i>Add Sport</a>
         </div>
 	</form>
 </div>

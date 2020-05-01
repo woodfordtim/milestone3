@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 @app.route('/find_events')
 def find_events():
     return render_template("events.html", 
-                            events=mongo.db.events.find())
+    events=mongo.db.events.find())
 
 
 # function for form to add events
@@ -41,8 +41,9 @@ def create_event():
 @app.route('/edit_event/<event_id>')
 def edit_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
-    all_event_type = mongo.db.sports.find()
-    return render_template('edit_event.html', event=the_event, event_type=all_event_type)
+    all_sports = mongo.db.sports.find()
+    return render_template('edit_event.html', event=the_event, sports=all_sports)
+
 
 # function to send edited data back to MongoDB and update database
 @app.route('/update_event/<event_id>', methods=['POST']) 
@@ -75,26 +76,27 @@ def delete_event(event_id):
 @app.route('/find_sports')
 def find_sports():
     return render_template('sports.html', 
-                            sports=mongo.db.sports.find()) #sports refers to for collection
+    sports=mongo.db.sports.find()) #sports refers to for collection
 
 # function take the user to editable page (a form)
 @app.route('/edit_sport/<sports_id>') #'url for' points towards the name of a function, not the name of the route
 def edit_sport(sports_id): # sports_id as a parameter to search for document in db to feed edit into form
     return render_template('edit_sport.html',
-                            sports=mongo.db.sports.find_one( #should there be an s in eventtypes... or not?
-                            {'_id': ObjectId(sports_id)}))
+    sports=mongo.db.sports.find_one( #should there be an s in eventtypes... or not?
+    {'_id': ObjectId(sports_id)}))
 
 
 # update is used to carry out the update to the database
 @app.route('/update_sport/<sports_id>', methods=['POST'])
 def update_sport(sports_id):
-    mongo.db.sports.update({'id': ObjectId(sports_id)},
-        {'sports': request.form.get('sports')})
+    mongo.db.sports.update(
+        {'id': ObjectId(sports_id)},
+        {'sport_name': request.form.get('sport_name')})
     return redirect(url_for('find_sports'))
 
 
 @app.route('/delete_sport/<sports_id>')
-def delete_sport(sport_id):
+def delete_sport(sports_id):
     mongo.db.event_type.remove({'_id': ObjectId(sports_id)})
     return redirect(url_for('find_sports'))
 

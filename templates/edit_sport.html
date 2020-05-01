@@ -1,20 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Edit an Event Type</h3>
+<h3>Edit a Sport</h3>
 
 <div class="row">
 	<form action="{{ url_for('update_sport', sports_id=sports._id)}} " method="POST" class="col s12">
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<input id="sport_name" type="text" class="validate" name="sport_name" value="{{sport.sport_name}}">
+				<input id="sport_name" type="text" class="validate" name="sport_name" value="{{sports.sport_name}}">
 				<label for="sports">Sports</label>
 			</div>
 		</div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Sports
-                <i class="material-icons right">category</i>
-            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Save Changes
+                <i class="material-icons right">playlist_add</i>
+             </button>
         </div>
 	</form>
 </div>
