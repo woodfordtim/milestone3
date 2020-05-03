@@ -30,8 +30,8 @@ def add_event():
 
 
 # function to sumbit a new event to form http method POST (default is GET) and create a new event
-@app.route('/create_event', methods=['POST'])
-def create_event():
+@app.route('/insert_event', methods=['POST'])
+def insert_event():
     events=mongo.db.events
     print(request.form.to_dict())
     events.insert_one(request.form.to_dict()) #insert when you submit info to a uri it does so in a request object and then convert the form to dictionary so it can be understood by MongoDB
@@ -79,16 +79,20 @@ def find_sports():
     sports=mongo.db.sports.find()) #sports refers to for collection
 
 # function take the user to editable page (a form)
-@app.route('/edit_sport/<sports_id>') #'url for' points towards the name of a function, not the name of the route
+@app.route('/edit_sport/<sports_id>', methods=["GET", "POST"]) #'url for' points towards the name of a function, not the name of the route
 def edit_sport(sports_id): # sports_id as a parameter to search for document in db to feed edit into form
-    return render_template('edit_sport.html',
-    sports=mongo.db.sports.find_one( #should there be an s in eventtypes... or not?
-    {'_id': ObjectId(sports_id)}))
+    print(sports_id)
+    if request.method == "POST":
+        sport = mongo.db.sports.find_one({'_id': ObjectId(sports_id)})
+        mongo.db.sports.update_one(sport, {"$set": request.form.to_dict()})
+        return render_template('sports.html', sports=mongo.db.sports.find())
+    return render_template('edit_sport.html', sports=mongo.db.sports.find_one({'_id': ObjectId(sports_id)}))
 
 
 # update is used to carry out the update to the database
 @app.route('/update_sport/<sports_id>', methods=['POST'])
 def update_sport(sports_id):
+    print(sports_id)
     mongo.db.sports.update(
         {'id': ObjectId(sports_id)},
         {'sport_name': request.form.get('sport_name')})
@@ -97,21 +101,21 @@ def update_sport(sports_id):
 
 @app.route('/delete_sport/<sports_id>')
 def delete_sport(sports_id):
-    mongo.db.event_type.remove({'_id': ObjectId(sports_id)})
+    mongo.db.sports.remove({'_id': ObjectId(sports_id)})
     return redirect(url_for('find_sports'))
 
 
 @app.route('/insert_sport', methods=['POST'])
 def insert_sport():
     sports=mongo.db.sports #access the mongo DB
-    sports_doc = {'sports': request.form.get('sport')} #'sports' refers to form field
-    mongo.db.event_type.insert_one(sports_doc) #inserts new event type to data collection
+    sports_doc = {'sport_name': request.form.get('sport_name')} #'sports' refers to form field
+    sports.insert_one(sports_doc) #inserts new event type to data collection
     return redirect(url_for('find_sports')) #redirects back to list of event_types
 
 
 # function to direct us and render the view that allows us to insert sport
-@app.route('/new_sport')
-def new_sport():
+@app.route('/add_sport')
+def add_sport():
     return render_template('add_sport.html')
 
 
