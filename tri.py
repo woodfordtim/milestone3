@@ -26,7 +26,8 @@ def find_events():
 @app.route('/add_event')
 def add_event():
     return render_template('add_event.html', 
-    sports=mongo.db.sports.find()) # event_type refers to Collection so must be accurate
+    sports=mongo.db.sports.find(), # sports refers to Collection so must be accurate
+    distances=mongo.db.distances.find()) 
 
 
 # function to sumbit a new event to form http method POST (default is GET) and create a new event
@@ -52,8 +53,8 @@ def update_event(event_id):
     events.update( {'_id': ObjectId(event_id)},
     {
         'event_name': request.form.get('event_name'),
-        'sports': request.form.get('sports'),
-        'distance': request.form.get('distance'),
+        'sport_name': request.form.get('sport_name'),
+        'event_distance': request.form.get('event_distance'),
         'cost': request.form.get('cost'),
         'difficulty': request.form.get('difficulty'),
         'location_url': request.form.get('location_url'),
@@ -61,7 +62,8 @@ def update_event(event_id):
         'last_updated': request.form.get('last_updated'),
         'event_contacts': request.form.get('event_contacts'),
         'author': request.form.get('author'),
-        'link': request.form.get('link')
+        'link': request.form.get('link'),
+        'description': request.form.get('description')
     })
     return redirect(url_for('find_events')) #redirect back to list of events page
 

@@ -14,15 +14,14 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
-				<select id="sports" name="sports">
+				<select id="sport_name" name="sport_name">
                     <option value="" disabled selected>Choose event type</option>
                     {% for event in sports%}
-                        {% if event.sports== event.sports %}
-                            <option value="{{event.sports}}" selected > {{event.sports}}</option>
+                        {% if event.sport == event.sports %}
+                            <option value="{{event.sport_name}}" selected > {{event.sport_name}}</option>
                             {% else %}
-                            <option value="{{event.sports}}"> {{event.sports}}</option>
+                            <option value="{{event.sport_name}}"> {{event.sport_name}}</option>
                         {% endif %}
-
                     {% endfor %}
                 </select>
 				<label>Sport</label>
@@ -31,13 +30,16 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">directions_bike</i>
-				<select id="distance" name="distance">
-                    <option value="" disabled selected>Distance</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                <select id="distances" name="distance">
+                    <option value="" disabled selected>Choose distance</option>
+                    {% for event in sports%}
+                        {% if event.sport == event.sports %}
+                            <option value="{{event.distance}}" selected > {{event.distance}}</option>
+                            {% else %}
+                            <option value="{{event.distance}}"> {{event.distance}}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
-				<label>Distance</label>
 			</div>
 		</div>
 		<div class="row">
@@ -50,14 +52,14 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">event</i>
-				<input type="text" id="date" name="event_date" class="datepicker">
-				<label for="date">Date of Event</label>
+				<input type="text" id="event_date" name="event_date" class="datepicker">
+				<label for="event_date">Date of Event</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" name="location" type="text" class="validate">
+				<input placeholder="Location" id="location_url" name="location_url" type="text" class="validate">
 				<label for="location">Location</label>
 			</div>
 		</div>
@@ -78,7 +80,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
-				<textarea name="Description of Event" id="description" class="materialize-textarea">{{event.event_name}}</textarea>
+				<textarea name="Description of Event" id="description" class="materialize-textarea">{{event.description}}</textarea>
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
