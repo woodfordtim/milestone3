@@ -2,49 +2,54 @@
 <html lang="en">
 
 <head>
+	<!-- CSS -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type='text/css'>
-	<title>Title</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/materialize.css')}}" type="text/css" media="screen,projection">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+
+	<title>Tri-Events</title>
 </head>
 
 <body>
 	<header>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="{{url_for('find_events')}}" class="brand-logo">Tri-Events</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		<nav class="white" role="navigation">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="{{url_for('index')}}" class="brand-logo">Tri-Events</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="{{ url_for('index')}}">Home</a></li>
 					<li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">Add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
 				</ul>
-				<ul class="sidenav" id="mobile-demo">
-					<li><a href="{{url_for('find_events')}}">Events</a></li>
+                <ul class="sidenav" id="mobile-demo">
+					<li><a href="{{ url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
 				</ul>
-
+				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 			</div>
 		</nav>
-
 	</header>
 
-	<div class="container">
+    <div id="index-banner" class="container">
 		<h1>Tri-Events</h1>
 		{% block content %}{% endblock %}
 	</div>
 
-
+	<!--  Scripts-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="static/js/materialize.js"></script>
+
 	<script type="text/javascript">
-    
 		$(document).ready(function() {
 
             $('.collapsible').collapsible();
             $('select').formSelect();
             $('.sidenav').sidenav();
+            $('.parallax').parallax();
             $(".datepicker").datepicker({
                 format: "dd mmm yyyy",
                 yearRange: 3,
