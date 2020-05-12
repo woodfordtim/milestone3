@@ -7,11 +7,13 @@
  */
 
 nav ul a,
-nav .brand-logo {
-  color: #444;
+nav {
+    color: #ffffff;
 }
 
 p {
+  font-size: 18px;
+  text-align: center;
   line-height: 2rem;
 }
 
@@ -20,10 +22,11 @@ p {
 }
 
 .parallax-container {
-  min-height: 380px;
+  min-height: 700px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
+  background-size: 300px 100px;
 }
   .parallax-container .section {
     width: 100%;
