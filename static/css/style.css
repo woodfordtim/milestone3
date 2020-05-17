@@ -8,17 +8,41 @@
 
 nav ul a,
 nav {
-    color: #ffffff;
+    color: white; 
+}
+
+.banner {
+    background-image: url(../img/background10.jpg);
+    height: 500px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position-y: 35%;
+    background-position-x: 10%;
+    background-size: cover;
+
 }
 
 p {
-  font-size: 18px;
-  text-align: center;
-  line-height: 2rem;
+    font-size: 18px;
+    text-align: center;
+    line-height: 2rem;
 }
 
 .sidenav-trigger {
-  color: #26a69a;
+    color: #26a69a;
+}
+
+h3 {
+    font-size: 120px;
+}
+
+.caption {
+    font-weight: 900;
+    font-size: 60px !important;
+}
+
+/* .parallax {
+    background-position: bottom
 }
 
 .parallax-container {
@@ -26,11 +50,10 @@ p {
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
-  background-size: 300px 100px;
 }
   .parallax-container .section {
     width: 100%;
-  }
+  } */
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -48,11 +71,12 @@ p {
   }
 }
 
-.icon-block {
-  padding: 0 15px;
+.card {
+  margin: 30px 10px;
+  padding:  5px;
 }
-.icon-block .material-icons {
-  font-size: inherit;
+.material-icons {
+  font-size: 75px;
 }
 
 footer.page-footer {

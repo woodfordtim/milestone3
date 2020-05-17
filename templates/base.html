@@ -4,7 +4,7 @@
 <head>
 	<!-- CSS -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/        materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/materialize.css')}}" type="text/css" media="screen,projection">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 
@@ -12,12 +12,15 @@
 </head>
 
 <body>
-	<header class="navbar-fixed">
-		<nav class="blue blue darken-4" role="navigation">
-			<div class="nav-wrapper container">
-				<a id="logo-container" href="{{url_for('index')}}" class="brand-logo blue darken-4">Tri-Events</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="{{ url_for('index')}}">Home</a></li>
+    <header>
+        <nav class="nav-wrapper blue">
+            <div class="container">
+                <a href="{{url_for('index')}}" class="brand-logo">Tri-Events</a>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right blue-text hide-on-med-and-down">
+					<li><a href="{{url_for('index')}}">Home</a></li>
 					<li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">Add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
@@ -28,10 +31,10 @@
 					<li><a href="{{url_for('add_event')}}">add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
 				</ul>
-				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			</div>
-		</nav>
-	</header>
+            </div>
+        </nav>
+    </header>
+
 
     <div id="index-banner">
 		{% block content %}{% endblock %}
@@ -49,6 +52,7 @@
             $('select').formSelect();
             $('.sidenav').sidenav();
             $('.parallax').parallax();
+            $('.slider').slider();
             $(".datepicker").datepicker({
                 format: "dd mmm yyyy",
                 yearRange: 3,
