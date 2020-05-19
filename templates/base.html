@@ -6,14 +6,17 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/        materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/materialize.css')}}" type="text/css" media="screen,projection">
-	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
 
 	<title>Tri-Events</title>
 </head>
 
 <body>
     <header>
-        <nav class="nav-wrapper blue">
+        <nav class="nav-wrapper blue darken-4">
             <div class="container">
                 <a href="{{url_for('index')}}" class="brand-logo">Tri-Events</a>
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger">
@@ -24,9 +27,13 @@
 					<li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">Add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
+                    <li class="btn-floating blue center"><a href="{{url_for('logon')}}">
+                        <i class="material-icons center">person</i></a>
+                    </li>
 				</ul>
                 <ul class="sidenav" id="mobile-demo">
-					<li><a href="{{ url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('logon')}}">Logon</a></li>
+                    <li><a href="{{ url_for('index')}}">Home</a></li>
                     <li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
@@ -40,11 +47,15 @@
 		{% block content %}{% endblock %}
 	</div>
 
-	<!--  Scripts-->
+	<!--  General Scripts-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="static/js/materialize.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
 
+    <!-- JQuery for Materialize -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 
@@ -65,6 +76,9 @@
             });
         });       
 	</script>
+
+    {% block js %}
+	{% endblock %}
 
 </body>
 

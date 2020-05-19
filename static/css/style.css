@@ -41,6 +41,10 @@ h3 {
     font-size: 60px !important;
 }
 
+#mapid { 
+    height: 180px; 
+}
+
 /* .parallax {
     background-position: bottom
 }

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="container">
+
+    <h3>Logon</h3>
+
+	<div class="row">
+		<form class="col s12" method="POST">
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Username" id="username" type="text" class="validate">
+					<label for="username">Username</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Password" id="password" type="text" class="validate">
+					<label for="password">Password</label>
+				</div>
+			</div>
+			<div class="row">
+				<button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+{% endblock %}
+
+
+<head>
+        <title>Home Page</title>
+    </head>
+    
+    <body>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <button>Go to chat!</button>
+        </form>
+    </body>

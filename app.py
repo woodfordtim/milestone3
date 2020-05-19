@@ -1,11 +1,13 @@
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for, request
+from flask import Flask, render_template, redirect, request, url_for, request, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #app is a variable (__name__) is a built in Flask variable. It needs this so it knows where to look for templates
 app = Flask(__name__)
+app.secret_key = 'randomstring123'
 
 if path.exists("env.py"):
     import env
@@ -123,6 +125,27 @@ def insert_sport():
 @app.route('/add_sport')
 def add_sport():
     return render_template('add_sport.html')
+
+@app.route('/view_event')
+def view_event():
+    return render_template('view_event.html')
+
+
+@app.route('/<username>')
+def user(username):
+    return "Welcome, " + username
+
+@app.route('/logon', methods = ["GET", "POST"])
+def logon():
+
+    if request.method  == "POST":
+        session["username"] = request.form["username"]
+
+    if "username" in session:
+        return redirect(session["username"])
+    
+    return render_template('logon.html')
+
 
 
 if __name__ == '__main__': #__main__ is the name of the default module in Python
