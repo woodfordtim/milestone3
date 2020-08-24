@@ -24,8 +24,8 @@ def index(): #this is the index 'view'
 # function for page to display a list all events
 @app.route('/find_events')
 def find_events():
-    return render_template("events.html", 
-    events=mongo.db.events.find())
+    events = list(mongo.db.events.find())
+    return render_template("events.html", events=events)
 
 
 # function for form to add events
@@ -45,7 +45,7 @@ def insert_event():
     return redirect(url_for('find_events')) #redirect back to list of events page
 
 # function to enable user to edit event
-@app.route('/edit_event/<event_id>')
+@app.route('/edit_event/<event_id>', methods=["GET", "POST"])
 def edit_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     all_sports = mongo.db.sports.find()
@@ -62,8 +62,8 @@ def update_event(event_id):
         'sport_name': request.form.get('sport_name'),
         'event_distance': request.form.get('event_distance'),
         'cost': request.form.get('cost'),
-        'difficulty': request.form.get('difficulty'),
-        'location_url': request.form.get('location_url'),
+        'location': request.form.get('location'),
+        'event_coordinates': request.form.get('event_coordinates'),
         'event_date': request.form.get('event_date'),
         'last_updated': request.form.get('last_updated'),
         'event_contacts': request.form.get('event_contacts'),

@@ -13,16 +13,26 @@ nav {
 
 .banner {
     background-image: url(../img/background10.jpg);
-    height: 500px;
+    height: 800px;
     width: 100%;
     background-repeat: no-repeat;
-    background-position-y: 35%;
-    background-position-x: 10%;
+    background-position-y: 90%;
     background-size: cover;
-
 }
 
-p {
+.call-to-action {
+    position: absolute;
+    top: 250px;
+    right: 100px;
+    text-align: center;
+}
+
+.maps {
+    height: 450px;
+    margin: 50px;
+}
+
+.about {
     font-size: 18px;
     text-align: center;
     line-height: 2rem;
@@ -33,16 +43,12 @@ p {
 }
 
 h3 {
-    font-size: 120px;
+    font-size: 20px;
 }
 
 .caption {
     font-weight: 900;
     font-size: 60px !important;
-}
-
-#mapid { 
-    height: 180px; 
 }
 
 /* .parallax {

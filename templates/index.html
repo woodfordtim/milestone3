@@ -2,144 +2,108 @@
 
 <body>
 
-    <div class="row">
-        <div class="banner">
-            <h1 class="right offset-2 blue-text">Are you ready?</h1>
-            <p class="right">Your perfect event is ready and waiting for you</p>
-        </div>
-    </div>
+	<div class="row">
+		<div class="banner">
+        <!-- <img src="/static/img/background1.jpg" alt=""> -->
+			<div class="call-to-action">
+				<h1 class="blue-text bold">Are You Ready?</h1>
+				<p>The perfect event is waiting for you</p>
+				<button class="btn waves-effect blue btn-large" type="submit" name="action">Find an Event</button>
+			</div>
+		</div>
+	</div>
 
 
-    <div id="mapid"></div>
+	<div id="mapid"></div>
 
 	<div class="container">
 		<div class="section">
 
-		<!--   Card Section   -->
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-content">
-                            <h2 class="center blue-text"><i class="material-icons">emoji_events</i></h2>
-                            <h5 class="center">Find an Event</h5>
-                            <p class="light">This is the easiest way to find the right event for you. You need to find an event to give you the motivation you need to get you out of the door on those cold mornings.</p>
-                        </div>
-                        <div class="card-action center">
-                            <a class="waves-effect waves-light blue btn" href="{{url_for('find_events')}}">Find An Event</a>
-                        </div>                    
-                    </div>
-                </div>
-
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-content">
-                            <h2 class="center blue-text"><i class="material-icons">share</i></h2>
-                            <h5 class="center">Create an Event</h5>
-                            <p class="light">The perfect way for event organisers to create, share and update your events. Your event can be online and viewable in minutes - then sit back and watch the entries flow in.</p>
-                        </div>
-                        <div class="card-action center">
-                            <a class="waves-effect waves-light blue btn" href="{{url_for('add_event')}}">Share an Event</a>
-                        </div>
-                    </div>                
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Parallax -->
-    <div class="parallax-container">
-        <div class="parallax">
-            <img src="static/img/background1.jpg" alt="#" class="responsive-img">
-        </div>
-    </div>
-
-    <!-- About the Company -->
-	<!-- Who We Are Section -->
-	<div class="container">
-		<div class="section">
-
+			<!--   Card Section   -->
 			<div class="row">
-				<div class="col s12 center">
-					<h3><i class="mdi-content-send blue-text"></i></h3>
-					<h4>Who We Are</h4>
-					<p class="center-align light">We are triathletes, runners, cyclists and swimmers of all ages and abilities. We swim, bike and run for fun, to stay fit and to socialise with like-minded people</p>
+				<div class="col s12 m6">
+					<div class="card">
+						<div class="card-content">
+							<h2 class="center blue-text"><i class="material-icons">emoji_events</i></h2>
+							<h5 class="center">Find an Event</h5>
+							<p class="light">This is the easiest way to find the right event for you. You need to find
+								an event to give you the motivation you need to get you out of the door on those cold
+								mornings.</p>
+						</div>
+						<div class="card-action center">
+							<a class="waves-effect waves-light blue btn" href="{{url_for('find_events')}}">Find An
+								Event</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col s12 m6">
+					<div class="card">
+						<div class="card-content">
+							<h2 class="center blue-text"><i class="material-icons">share</i></h2>
+							<h5 class="center">Create an Event</h5>
+							<p class="light">The perfect way for event organisers to create, share and update your
+								events. Your event can be online and viewable in minutes - then sit back and watch the
+								entries flow in.</p>
+						</div>
+						<div class="card-action center">
+							<a class="waves-effect waves-light blue btn" href="{{url_for('add_event')}}">Share an
+								Event</a>
+						</div>
+					</div>
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-	<!-- What We Do Section -->
+	<!-- About the Company -->
+	
 	<div class="container">
 		<div class="section">
 
+            <!-- Who We Are Section -->
 			<div class="row">
-				<div class="col s12 center">
+				<div class="about col s12 center">
+					<h3><i class="mdi-content-send blue-text"></i></h3>
+					<h4>Who We Are</h4>
+					<p class="center-align light">We are triathletes, runners, cyclists and swimmers of all ages and
+						abilities. We swim, bike and run for fun, to stay fit and to socialise with like-minded people
+					</p>
+				</div>
+			</div>
+
+            <!-- What We Do -->
+			<div class="row">
+				<div class="about col s12 center">
 					<h3><i class="mdi-content-send blue-text"></i></h3>
 					<h4>What We Do</h4>
-					<p class="center-align light">Our sole purpose at Tri-Events is to build our  triathlon community by sharing events so that others, like you and me, can find the perfect event in which to compete, stay fit and most importantly have fun!</p>
+					<p class="center-align light">Our sole purpose at Tri-Events is to build our triathlon community by
+						sharing events so that others, like you and me, can find the perfect event in which to compete,
+						stay fit and most importantly have fun!</p>
 				</div>
 			</div>
 
-		</div>
-	</div>
-
-	<!-- How We Do It Section -->
-	<div class="container">
-		<div class="section">
+	        <!-- How We Do It Section -->
 			<div class="row">
-				<div class="col s12 center">
+				<div class="about col s12 center">
 					<h3><i class="mdi-content-send brown-text"></i></h3>
 					<h4>Who We Are</h4>
-					<p class="center-align light">This community led website where you can search for the right event for you based on the type of event are looking for, distance,ability and, of course, location.<br><br>
-					If you an organiser or want to share a great event, you can do that, too.
-				    You can add, edit and provide reviews for events so that others
-					can find all they need to know about the event and make
-					an informed decision about whether or not to enter.</p>
+					<p class="center-align light">This is a community led website where you can search for the right
+						event for you based on the type of event are looking for, distance, ability and, of course,
+						location. If you are an event organiser or want to share a great event, you can do that, too.
+						.</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
 
-    <!-- Parallax -->
-    <div class="parallax-container">
-        <div class="parallax">
-            <img src="static/img/background1.jpg" alt="#" class="responsive-img">
-        </div>
-    </div>
-
+	<!-- Footer -->
 	<footer class="page-footer blue darken-4">
 		<div class="container">
-
 			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">What Do We Do</h5>
-					<p class="grey-text text-lighten-4">Testing</p>
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Settings</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Connect</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+				<p>Designed by TW Web Design</p>
 			</div>
 		</div>
 	</footer>

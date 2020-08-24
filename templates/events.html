@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Header for page -->
+<div>
+    <h2>Find Your Event</h2>
+</div>
+
 <!-- Leaflets map container -->
 <div class="container">
 	<div class="row">
 		<div id="mapid" class="maps"></div>
-		<p>text</p>
 	</div>
 </div>
 
+<!-- Events -->
 <div class="row">
 	{% for event in events %}
 	<div class="col s12 m6">
@@ -18,14 +23,16 @@
 				<p>{{event.event_date}}</p>
 			</div>
 			<div class="card-action">
+                <a href="{{url_for('view_event', event_id=event._id)}}"
+					class="waves-effect waves-light btn btn_small blue">View</a>
 				<a href="{{url_for('edit_event', event_id=event._id)}}"
 					class="waves-effect waves-light btn btn_small blue">Edit</a>
 				<a href="{{url_for('delete_event', event_id=event._id)}}"
 					class="waves-effect waves-light btn btn_small red">Del</a>
 			</div>
 			<div class="card-reveal">
-				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-				<p>Great event</p>
+                <span class="card-title grey-text text-darken-4 activator">{{event.event_name}}<i class="material-icons right">close</i></span>
+				<p>{{event.description}}</p>
 			</div>
 		</div>
 	</div>
@@ -39,7 +46,8 @@
 
 <!-- Leaflets Map required JS -->
 <script>
-	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+	var mymap = L.map('mapid').setView([51.505, -0.09], 8);
+    var marker = L.marker([51.5, -0.09]).addTo(mymap);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,   <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://   www.mapbox.com/">Mapbox</a>',
@@ -48,11 +56,11 @@
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken:    'pk.eyJ1Ijoid29vZGZvcmR0aW0iLCJhIjoiY2thZTk0cTlnMDJudDJ4cG5zYTBpemQ5YiJ9.QU5iShY0hSO7RC7ve1hF0w'
+        accessToken: 'pk.eyJ1Ijoid29vZGZvcmR0aW0iLCJhIjoiY2thZTk0cTlnMDJudDJ4cG5zYTBpemQ5YiJ9.QU5iShY0hSO7RC7ve1hF0w'
     }).addTo(mymap);
 
-    {% for event in events %}
-            var marker = L.marker([{{event.event_coordinates}}]).addTo(map).bindPopup('<a href="{{ url_for( 'view_event', event_id=event._id)}}">{{event.event_name|replace('_', ' ')}}</a>'); 
+        {% for event in events %}
+            var marker = L.marker([{{event.event_coordinates}}]).addTo(mymap).bindPopup('<a href="{{ url_for('view_event', event_id=event._id) }}">{{event.event_name}}</a>');
 
             if ( {{event.event_coordinates}} ) {
                 marker;

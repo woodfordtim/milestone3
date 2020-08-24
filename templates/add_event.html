@@ -1,9 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add an Event</h3>
+<h2>Add an Event</h2>
 
 <div class="row">
+
+    <!-- FORM TO ADD AN EVENT -->
 	<form action="{{ url_for('insert_event')}}" method="POST" class="col s12">
+
+    <!-- Event Name -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">emoji_events</i>
@@ -12,7 +16,7 @@
 			</div>
 		</div>
 
-        <!-- Select Sport -->
+        <!-- Select Sport (Sub-Category) -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">category</i>
@@ -26,19 +30,16 @@
 			</div>
 		</div>
 
-        <!-- Select Distance (sub-category) -->
-		<div class="row">
+        <!-- Define Distance -->
+        <div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">directions_bike</i>
-				<select id="distance" name="distance">
-                    <option value="" disabled selected>Choose distance</option>
-                    {% for distance in distances %}
-                    <option value="{{distance.event_distance}}" selected > {{distance.event_distance}}</option>
-                    {% endfor %}
-                </select>
-                <label>Select Distance</label>
+				<i class="material-icons prefix">directions_bik</i>
+				<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate">
+				<label for="event_distance">Event Distance(s)</label>
 			</div>
 		</div>
+
+        <!-- Select Date -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">event</i>
@@ -46,13 +47,26 @@
 				<label for="event_date">Date of Event</label>
 			</div>
 		</div>
+
+        <!-- Select Location -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location_url" type="text" class="validate">
-				<label for="location_url">Location</label>
+				<input placeholder="Location" id="location" type="text" class="validate">
+				<label for="location">Location</label>
 			</div>
 		</div>
+
+        <!-- Provide Coordinates -->
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">add_location</i>
+				<input placeholder="Coordinates" id="event_coordinates" type="text" class="form-control validate" name="event_coordinates" pattern="^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$" required>
+				<label for="event_coordinates">Add Event Coordinates</label>
+			</div>
+		</div>
+
+        <!-- Provide Web Link -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">insert_link</i>
@@ -60,6 +74,8 @@
 				<label for="link">Link to Event Website</label>
 			</div>
 		</div>
+
+        <!-- Provide Contact Email -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">mail</i>
@@ -67,6 +83,17 @@
 				<label for="event_contact">Contact Email</label>
 			</div>
 		</div>
+
+        <!-- Author Name -->
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">mail</i>
+				<input placeholder="email" id="author" type="text" class="validate">
+				<label for="author">Name of Author</label>
+			</div>
+		</div>
+
+        <!-- Event Description -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
@@ -74,13 +101,8 @@
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
-		<div class="row">
-			<div class="input-field col s12">
-				<p class="range-field"><input type="range" id="test5" min="0" max="10"></p>
-					<label for="difficulty">Difficulty</label>
-			</div>
-		</div>
 
+        <!-- Cost of Event -->
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">euro</i>
@@ -88,11 +110,14 @@
 				<label for="cost">Cost of participation</label>
 			</div>
 		</div>
+
+        <!-- Button to Create Event -->
 		<div class="row">
 			<button class="btn waves-effect waves-light" type="submit" name="action">Create Event
                 <i class="material-icons right">emoji_events</i>
             </button>
 		</div>
+
 	</form>
 </div>
 

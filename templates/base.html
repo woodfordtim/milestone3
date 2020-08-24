@@ -4,7 +4,7 @@
 <head>
 	<!-- CSS -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/        materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/materialize.css')}}" type="text/css" media="screen,projection">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"> 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -27,9 +27,6 @@
 					<li><a href="{{url_for('find_events')}}">Events</a></li>
 					<li><a href="{{url_for('add_event')}}">Add Events</a></li>
 					<li><a href="{{url_for('find_sports')}}">Sports</a></li>
-                    <li class="btn-floating blue center"><a href="{{url_for('logon')}}">
-                        <i class="material-icons center">person</i></a>
-                    </li>
 				</ul>
                 <ul class="sidenav" id="mobile-demo">
 					<li><a href="{{url_for('logon')}}">Logon</a></li>
