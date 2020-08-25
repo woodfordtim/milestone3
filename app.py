@@ -69,6 +69,7 @@ def update_event(event_id):
         'event_contacts': request.form.get('event_contacts'),
         'author': request.form.get('author'),
         'link': request.form.get('link'),
+        'img_url': request.form.get('img_url'),
         'description': request.form.get('description')
     })
     return redirect(url_for('find_events')) #redirect back to list of events page
@@ -91,7 +92,7 @@ def find_sports():
 def edit_sport(sports_id): # sports_id as a parameter to search for document in db to feed edit into form
     print(sports_id)
     if request.method == "POST":
-        sport = mongo.db.sports.find_one({'_id': ObjectId(sports_id)})
+        sports = mongo.db.sports.find_one({'_id': ObjectId(sports_id)})
         mongo.db.sports.update_one(sport, {"$set": request.form.to_dict()})
         return render_template('sports.html', sports=mongo.db.sports.find())
     return render_template('edit_sport.html', sports=mongo.db.sports.find_one({'_id': ObjectId(sports_id)}))
@@ -126,9 +127,11 @@ def insert_sport():
 def add_sport():
     return render_template('add_sport.html')
 
-@app.route('/view_event')
-def view_event():
-    return render_template('view_event.html')
+
+@app.route('/view_event/<event_id>')
+def view_event(event_id):
+    the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    return render_template('view_event.html', event=the_event)
 
 
 @app.route('/<username>')

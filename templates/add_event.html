@@ -22,8 +22,8 @@
 				<i class="material-icons prefix">category</i>
 				<select id="sport_name" name="sport_name">
                     <option value="" disabled selected>Choose Sport</option>
-                    {% for sport in sports %}
-                    <option value="{{sport.sport_name}}"> {{sport.sport_name}}</option>
+                    {% for sports in sports %}
+                    <option value="{{sports.sport_name}}"> {{sports.sport_name}}</option>
                     {% endfor %}
                 </select>
 				<label>Select Sport</label>
@@ -108,6 +108,15 @@
 				<i class="material-icons prefix">euro</i>
 				<input placeholder="Cost" id="cost" name="cost" type="text" class="validate">
 				<label for="cost">Cost of participation</label>
+			</div>
+		</div>
+
+        <!-- Image URL  -->
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">camera_enhance</i>
+				<input placeholder="Cost" id="img_url" name="img_url" type="text" class="validate">
+				<label for="img_url">Image URL</label>
 			</div>
 		</div>
 
