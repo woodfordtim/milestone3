@@ -32,12 +32,11 @@ def find_events():
 @app.route('/add_event')
 def add_event():
     return render_template('add_event.html', 
-    sports=mongo.db.sports.find(), # sports refers to Collection so must be accurate
-    distances=mongo.db.distances.find()) 
+    sports=mongo.db.sports.find()) # sports refers to Collection so must be accurate
 
 
 # function to sumbit a new event to form http method POST (default is GET) and create a new event
-@app.route('/insert_event', methods=['POST'])
+@app.route('/insert_event', methods=["GET", "POST"])
 def insert_event():
     events=mongo.db.events
     print(request.form.to_dict())

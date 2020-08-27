@@ -33,7 +33,7 @@
         <!-- Define Distance -->
         <div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">directions_bik</i>
+				<i class="material-icons prefix">directions_bike</i>
 				<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate">
 				<label for="event_distance">Event Distance(s)</label>
 			</div>
@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">event</i>
-				<input type="text" id="event_date" class="datepicker">
+				<input type="text" id="event_date" class="datepicker" name="event_date">
 				<label for="event_date">Date of Event</label>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" type="text" class="validate">
+				<input placeholder="Location" id="location" type="text" class="validate" name="location">
 				<label for="location">Location</label>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">insert_link</i>
-				<input placeholder="https://" id="link" type="text" class="validate">
+				<input placeholder="https://" id="link" type="text" class="validate" name="link">
 				<label for="link">Link to Event Website</label>
 			</div>
 		</div>
@@ -79,8 +79,8 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">mail</i>
-				<input placeholder="email" id="event_contacts" type="email" class="validate">
-				<label for="event_contact">Contact Email</label>
+				<input placeholder="email address" id="event_contacts" type="email" class="validate" name="event_contacts">
+				<label for="event_contacts">Contact Email</label>
 			</div>
 		</div>
 
@@ -88,7 +88,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">mail</i>
-				<input placeholder="email" id="author" type="text" class="validate">
+				<input placeholder="author name" id="author" type="text" class="validate" name="author">
 				<label for="author">Name of Author</label>
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
-				<textarea name="Description of Event" id="description" class="materialize-textarea"></textarea>
+				<textarea name="description" id="description" class="materialize-textarea"></textarea>
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
