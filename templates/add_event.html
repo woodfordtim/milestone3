@@ -28,6 +28,10 @@
                 </select>
 				<label>Select Sport</label>
 			</div>
+            <div>
+                <p>You're Sport not here? No problem, add your own:</p>
+                <a class="btn waves-effect waves-light" href="{{url_for('find_sports')}}">ADD SPORT</a>
+            </div>
 		</div>
 
         <!-- Define Distance -->
@@ -97,7 +101,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">details</i>
-				<textarea name="description" id="description" class="materialize-textarea"></textarea>
+				<textarea name="description" id="description" class="materialize-textarea"  data-length="100"></textarea>
 				<label for="description">Description of Event</label>
 			</div>
 		</div>
