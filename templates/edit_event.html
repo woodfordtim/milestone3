@@ -1,24 +1,27 @@
 {% extends 'base.html' %} {% block content %}
 
+<div class="container">
     <h3>Edit an Event</h3>
 
-    <!-- FORM TO EDIT AN EVENT -->
-    <form action="{{ url_for('update_event', event_id=event._id)}} " method="POST" class="col s12">
+	<div class="row blue lighten-4">
 
-        <!-- Event Name -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">emoji_events</i>
-				<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate" value="{{ event.event_name }}">
-				<label for="event_name">Event Name</label>
+		<!-- FORM TO EDIT AN EVENT -->
+		<form action="{{ url_for('update_event', event_id=event._id)}} " method="POST" class="col s12">
+
+			<!-- Event Name -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">emoji_events</i>
+					<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate" value="{{ event.event_name }}">
+					<label for="event_name">Event Name</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Sport (Sub-Category) -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">category</i>
-				<select id="sport_name" name="sport_name">
+			<!-- Select Sport (Sub-Category) -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">category</i>
+					<select id="sport_name" name="sport_name">
                     <option value="" disabled>Choose Sport</option>
                     {% for sport in sports %}
                         {% if sport.sport_name == event.sport_name %}
@@ -28,104 +31,112 @@
                         {% endif %}
                     {% endfor %}
                 </select>
-				<label>Select Sport</label>
+					<label>Select Sport</label>
+				</div>
+				<div>
+					<p>You're Sport not here? No problem, add your own: <a
+							class="waves-effect waves-light btn btn_small blue" href="{{url_for('find_sports')}}">ADD
+							SPORT</a></p>
+
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Distance (sub-category) -->
-        <div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">directions_bik</i>
-				<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate" value="{{ event.event_distance }}">
-				<label for="event_distance">Event Distance(s)</label>
+			<!-- Select Distance (sub-category) -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">directions_bik</i>
+					<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate" value="{{ event.event_distance }}">
+					<label for="event_distance">Event Distance(s)</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Date -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">event</i>
-				<input type="text" id="event_date" class="datepicker" name="event_date" value="{{ event.event_date }}">
-				<label for="event_date">Date of Event</label>
+			<!-- Select Date -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">event</i>
+					<input type="text" id="event_date" class="datepicker" name="event_date" value="{{ event.event_date }}">
+					<label for="event_date">Date of Event</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Location -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" name="location" type="text" class="validate" value="{{ event.location }}">
-				<label for="location">Location</label>
+			<!-- Select Location -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">add_location</i>
+					<input placeholder="Location" id="location" name="location" type="text" class="validate" value="{{ event.location }}">
+					<label for="location">Location</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Coordinates -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Coordinates" id="event_coordinates" type="text" class="form-control validate" name="event_coordinates" pattern="^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$" required value="{{ event.event_coordinates }}">
-				<label for="event_coordinates">Add Event Coordinates</label>
+			<!-- Provide Coordinates -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">add_location</i>
+					<input placeholder="Coordinates" id="event_coordinates" type="text" class="form-control validate" name="event_coordinates" pattern="^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$" required value="{{ event.event_coordinates }}">
+					<label for="event_coordinates">Add Event Coordinates</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Web Link -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">insert_link</i>
-				<input placeholder="https://" id="link" type="text" class="validate" name="link" value="{{ event.link }}">
-				<label for="link">Link to Event Website</label>
+			<!-- Provide Web Link -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">insert_link</i>
+					<input placeholder="https://" id="link" type="text" class="validate" name="link" value="{{ event.link }}">
+					<label for="link">Link to Event Website</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Contact Email -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">mail</i>
-				<input placeholder="email" id="event_contacts" type="email" class="validate" name="event_contacts" value="{{ event.event_contacts }}">
-				<label for="event_contact">Contact Email</label>
+			<!-- Provide Contact Email -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">mail</i>
+					<input placeholder="email" id="event_contacts" type="email" class="validate" name="event_contacts" value="{{ event.event_contacts }}">
+					<label for="event_contact">Contact Email</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Event Description -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">details</i>
-				<textarea name="description" id="description" class="materialize-textarea">{{ event.description }}</textarea>
-				<label for="description">Description of Event</label>
+			<!-- Event Description -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">details</i>
+					<textarea name="description" id="description" class="materialize-textarea">{{ event.description }}</textarea>
+					<label for="description">Description of Event</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Cost of Event -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">euro</i>
-				<input placeholder="Cost" id="cost" name="cost" type="text" class="validate" value="{{ event.cost }}">
-				<label for="cost">Cost of participation</label>
+			<!-- Cost of Event -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">euro</i>
+					<input placeholder="Cost" id="cost" name="cost" type="text" class="validate" value="{{ event.cost }}">
+					<label for="cost">Cost of participation</label>
+				</div>
 			</div>
-		</div>
 
-         <!-- Image URL  -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">camera_enhance</i>
-				<input placeholder="Image" id="img_url" name="img_url" type="text" class="validate" value="{{ event.img_url }}">
-                <label for="img_url">Image URL</label>
+			<!-- Image URL  -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">camera_enhance</i>
+					<input placeholder="Image" id="img_url" name="img_url" type="text" class="validate" value="{{ event.img_url }}">
+					<label for="img_url">Image URL</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Submit Button -->
-		<div class="row">
-            <div class="col s12 center-align">
-            <!-- Cancel Button -->
-            <a href="{{ url_for('find_events')}}" class="btn waves-effect waves-light">Cancel<i class="material-icons right">close</i></a>
-			    <button class="btn waves-effect waves-light" type="submit" name="action">Edit Event
-                    <i class="material-icons right">create</i>
-                </button>
-            </div>
-		</div>
+			<!-- Submit Button -->
+			<div class="row">
+				<div class="col s12 center-align">
+					<!-- Cancel Button -->
+					<button class="waves-effect waves-light btn btn_small blue" type="submit" name="action">Edit Event
+                <i class="material-icons right">create</i>
+            </button>
+					<a href="{{ url_for('find_events')}}"
+						class="waves-effect waves-light btn btn_small red">Cancel<i class="material-icons right">close</i>
+					</a>
+				</div>
+			</div>
 
-	</form>
-
+		</form>
+	</div>
 </div>
 
 {% endblock %}

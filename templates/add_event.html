@@ -1,137 +1,139 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Add an Event</h2>
+<div class="container">
+	<h2>Add an Event</h2>
 
-<div class="row">
+	<div class="row blue lighten-4">
 
-    <!-- FORM TO ADD AN EVENT -->
-	<form action="{{ url_for('insert_event')}}" method="POST" class="col s12">
+		<!-- FORM TO ADD AN EVENT -->
+		<form action="{{ url_for('insert_event')}}" method="POST" class="col s12">
 
-    <!-- Event Name -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">emoji_events</i>
-				<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate">
-				<label for="event_name">Event Name</label>
+			<!-- Event Name -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">emoji_events</i>
+					<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate">
+					<label for="event_name">Event Name</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Sport (Sub-Category) -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">category</i>
-				<select id="sport_name" name="sport_name">
+			<!-- Select Sport (Sub-Category) -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">category</i>
+					<select id="sport_name" name="sport_name">
                     <option value="" disabled selected>Choose Sport</option>
                     {% for sports in sports %}
                     <option value="{{sports.sport_name}}"> {{sports.sport_name}}</option>
                     {% endfor %}
                 </select>
-				<label>Select Sport</label>
+					<label>Select Sport</label>
+				</div>
+				<div>
+					<p>You're Sport not here? No problem, add your own: <a
+							class="waves-effect waves-light btn btn_small blue" href="{{url_for('find_sports')}}">ADD
+							SPORT</a></p>
+
+				</div>
 			</div>
-            <div>
-                <p>You're Sport not here? No problem, add your own:</p>
-                <a class="btn waves-effect waves-light" href="{{url_for('find_sports')}}">ADD SPORT</a>
-            </div>
-		</div>
 
-        <!-- Define Distance -->
-        <div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">directions_bike</i>
-				<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate">
-				<label for="event_distance">Event Distance(s)</label>
+			<!-- Define Distance -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">directions_bike</i>
+					<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate">
+					<label for="event_distance">Event Distance(s)</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Date -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">event</i>
-				<input type="text" id="event_date" class="datepicker" name="event_date">
-				<label for="event_date">Date of Event</label>
+			<!-- Select Date -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">event</i>
+					<input type="text" id="event_date" class="datepicker" name="event_date">
+					<label for="event_date">Date of Event</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Select Location -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Location" id="location" type="text" class="validate" name="location">
-				<label for="location">Location</label>
+			<!-- Select Location -->
+			<div class="row">
+				<div class="input-field col s12 m6">
+					<i class="material-icons prefix">add_location</i>
+					<input placeholder="Location" id="location" type="text" class="validate" name="location">
+					<label for="location">Location</label>
+				</div>
+
+				<!-- Provide Coordinates -->
+				<div class="input-field col s12 m6">
+					<i class="material-icons prefix">add_location</i>
+					<input placeholder="Coordinates" id="event_coordinates" type="text" class="form-control validate" name="event_coordinates" pattern="^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$" required>
+					<label for="event_coordinates">Add Event Coordinates</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Coordinates -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">add_location</i>
-				<input placeholder="Coordinates" id="event_coordinates" type="text" class="form-control validate" name="event_coordinates" pattern="^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$" required>
-				<label for="event_coordinates">Add Event Coordinates</label>
+			<!-- Provide Web Link -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">insert_link</i>
+					<input placeholder="https://" id="link" type="text" class="validate" name="link">
+					<label for="link">Link to Event Website</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Web Link -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">insert_link</i>
-				<input placeholder="https://" id="link" type="text" class="validate" name="link">
-				<label for="link">Link to Event Website</label>
+			<!-- Provide Contact Email -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">mail</i>
+					<input placeholder="email address" id="event_contacts" type="email" class="validate" name="event_contacts">
+					<label for="event_contacts">Contact Email</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Provide Contact Email -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">mail</i>
-				<input placeholder="email address" id="event_contacts" type="email" class="validate" name="event_contacts">
-				<label for="event_contacts">Contact Email</label>
+			<!-- Author Name -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">person</i>
+					<input placeholder="author name" id="author" type="text" class="validate" name="author">
+					<label for="author">Name of Author</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Author Name -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">mail</i>
-				<input placeholder="author name" id="author" type="text" class="validate" name="author">
-				<label for="author">Name of Author</label>
+			<!-- Event Description -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">details</i>
+					<textarea name="description" id="description" class="materialize-textarea"  data-length="100"></textarea>
+					<label for="description">Description of Event</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Event Description -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">details</i>
-				<textarea name="description" id="description" class="materialize-textarea"  data-length="100"></textarea>
-				<label for="description">Description of Event</label>
+			<!-- Cost of Event -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">euro</i>
+					<input placeholder="Cost" id="cost" name="cost" type="text" class="validate">
+					<label for="cost">Cost of participation</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Cost of Event -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">euro</i>
-				<input placeholder="Cost" id="cost" name="cost" type="text" class="validate">
-				<label for="cost">Cost of participation</label>
+			<!-- Image URL  -->
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">camera_enhance</i>
+					<input placeholder="Cost" id="img_url" name="img_url" type="text" class="validate">
+					<label for="img_url">Image URL</label>
+				</div>
 			</div>
-		</div>
 
-        <!-- Image URL  -->
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">camera_enhance</i>
-				<input placeholder="Cost" id="img_url" name="img_url" type="text" class="validate">
-				<label for="img_url">Image URL</label>
+			<!-- Button to Create Event -->
+			<div class="row center-align">
+				<button class="waves-effect waves-light btn btn_small blue" type="submit" name="action">Create Event</button>
+				<a href="{{ url_for('find_events')}}"
+					class="waves-effect waves-light btn btn_small red">Cancel<i class="material-icons right">close</i></a>
 			</div>
-		</div>
 
-        <!-- Button to Create Event -->
-		<div class="row">
-			<button class="btn waves-effect waves-light" type="submit" name="action">Create Event
-                <i class="material-icons right">emoji_events</i>
-            </button>
-		</div>
-
-	</form>
+		</form>
+	</div>
 </div>
 
 

@@ -1,23 +1,27 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Add Sport</h2>
+<div class="container">
 
-<div class="row">
-	<form action="{{ url_for('insert_sport')}} "method="POST" class="col s12">
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">category</i>
-				<input id="sport_name" name="sport_name" type="text" class="validate">
-				<label for="sport_name">Sports</label>
+	<h2>Add Sport</h2>
+
+	<div class="row blue-lighten-4">
+		<form action="{{ url_for('insert_sport')}} " method="POST" class="col s12">
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">category</i>
+					<input id="sport_name" name="sport_name" type="text" class="validate">
+					<label for="sport_name">Sports</label>
+				</div>
 			</div>
-		</div>
-        <div class="row">
-         <a href="{{ url_for('find_sports')}}" class="btn waves-effect waves-light">Cancel<i class="material-icons right">close</i></a>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Sport
-                <i class="material-icons right">category</i>
-            </button>
-        </div>
-	</form>
+			<div class="row">
+				<a href="{{ url_for('find_sports')}}"
+					class="waves-effect waves-light btn btn_small red">Cancel<i class="material-icons right">close</i></a>
+				<button class="waves-effect waves-light btn btn_small blue" type="submit" name="action">Add Sport
+                    <i class="material-icons right">category</i>
+                </button>
+			</div>
+		</form>
+	</div>
 </div>
 
 {% endblock %}

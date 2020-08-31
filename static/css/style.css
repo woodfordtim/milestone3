@@ -27,11 +27,6 @@ nav {
     text-align: center;
 }
 
-.maps {
-    height: 300px;
-    width: 100%;
-}
-
 .about {
     font-size: 18px;
     text-align: center;
@@ -69,23 +64,6 @@ h3 {
     margin: 0px;
 }
 
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
-
-
 .description {
     padding: top 20px;
 }
@@ -100,14 +78,47 @@ h3 {
     margin: 10px;
     border-style: solid;
     border-width: 1px;
-    border-color:blue;
+    border-color: #0d47a1;
     width: 100%;
 }
 
-.form {
-    width: 80%;
+.maps {
+    height: 300px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0d47a1;
+    width: 100%;
 }
+
+form {
+    width: 80%;
+    padding: 50px !important;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #0d47a1;
+}
+
 
 footer.page-footer {
   margin: 0;
+}
+
+#index-banner .section {
+    top: 10%;
+  }
+}
+
+/* media queries */ 
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
 }
