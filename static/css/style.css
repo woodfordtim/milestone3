@@ -64,21 +64,26 @@ h3 {
     margin: 0px;
 }
 
-.description {
-    padding: top 20px;
+.btn-flat {
+    margin: 3px;
 }
 
 .material-icons {
   font-size: 75px;
 }
+    
+.sport-header {
+    padding-left: 40px !important;
+}
 
 .mini_map {
     height: 400px;
-    padding: 10px;
-    margin: 10px;
+    padding: 20px;
+    margin: 20px;
     border-style: solid;
     border-width: 1px;
     border-color: #0d47a1;
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -87,6 +92,7 @@ h3 {
     border-style: solid;
     border-width: 1px;
     border-color: #0d47a1;
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -99,6 +105,9 @@ form {
     border-color: #0d47a1;
 }
 
+.sport-form {
+    width: 75%;
+}
 
 footer.page-footer {
   margin: 0;

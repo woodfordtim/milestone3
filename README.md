@@ -1,35 +1,102 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Tr-Events
+This website is a community driven site to share sporting events. Its focus is, but not exlusive to, triathlon events (inlcuding swimmming, cycling and running). 
 
-Welcome woodfordtim,
+## UX
+### User Stories
+* 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+* 
 
-## Gitpod Reminders
+* 
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* 
 
-`python3 -m http.server`
+* 
 
-A blue button should appear to click: *Make Public*,
+* 
 
-Another blue button should appear to click: *Open Browser*.
+### Wireframes - links from Adobe XD
+[Wireframe]
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+PDF files also available in the project folders.
 
-A blue button should appear to click: *Make Public*,
+## Features
+### Feature 1 - Find an event
 
-Another blue button should appear to click: *Open Browser*.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+### Feature 2 - Create an event
 
-## Updates Since The Instructional Video
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+### Feature 3 - Add a sport
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Technologies Used
+### Python
+This project uses Python...
 
---------
+### 
+Flask is used to...
 
-Happy coding!
+### Jinga 
+This project uses Jinga templating to...
+
+### JS
+The project usesn JS to...
+
+### JQuery
+The project uses JQuery to create an event that makes the website responsive.
+
+### Materialize
+The project uses the Materialize library for styling.
+
+### Leaflet
+The project uses Leaflet an open-source JavaScript library for mobile-friendly interactive maps.
+
+https://leafletjs.com/examples/quick-start/
+
+## Testing
+###  Test 1: 
+Try to select....
+
+### Test 2:
+
+
+### Test 3:
+
+
+### Test 4: Responsiveness
+
+
+### Device Testing
+The application loads well on all three devices testes, which include iPhone 11, iPad Pro (9 inch version), Windows laptop.
+
+## Bugs and Problems
+### Getting the map to show each event on the view_event page
+There cannot be any events with missing or incorrect coordiantes or the site will not load the map for any event. To fix this issue ensure coordinates is a required field in the forms.
+
+
+### Deployment
+#### GHeroku
+The site was deployed using Heroku. xxxx 
+
+To do this from within the GitHub repository follow the `settings` link and then scroll to 
+the bottom of the page to find GitHub pages. Select `master branch` as the source and then click save.
+
+[School Data Dashboard](https://woodfordtim.github.io/dataDash/)
+
+#### Local Deployment
+You can also deploy the project locally by following the `clone / download` link from the main repository page and copy the link. 
+Then, open up a new terminal in your IDE and type 'git clone' followed directly by the copied link.
+
+## New Features to follow in the next version
+* Improve styling on the homepage
+* Improved user personalisation
+* Add pop-ups to warn users before losing data
+* 
+
+## Credits
+* John Williams (Code Institute student)- Hikes website. Insiration and how to add maps so that this can show events on a map for the find events and view events pages.
+* 
+* Materialize
+* 
+* 

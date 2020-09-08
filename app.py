@@ -4,18 +4,24 @@ from flask import Flask, render_template, redirect, request, url_for, request, s
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-
-#app is a variable (__name__) is a built in Flask variable. It needs this so it knows where to look for templates
-app = Flask(__name__)
-app.secret_key = 'randomstring123'
-
 if path.exists("env.py"):
     import env
 
+#app is a variable (__name__) is a built in Flask variable. It needs this so it knows where to look for templates
+app = Flask(__name__)
+
+if __name__ == "main":
+    app.run(host=os.environ.get("IP"),
+        port=int(os.environ.get("PORT")),
+        debug=True)
+
+
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGODB_NAME"] = os.environ.get('MONGODB_NAME')
+app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
 
 @app.route("/")
 def index(): #this is the index 'view'
@@ -92,7 +98,7 @@ def edit_sport(sports_id): # sports_id as a parameter to search for document in 
     print(sports_id)
     if request.method == "POST":
         sports = mongo.db.sports.find_one({'_id': ObjectId(sports_id)})
-        mongo.db.sports.update_one(sport, {"$set": request.form.to_dict()})
+        mongo.db.sports.update_one(sports, {"$set": request.form.to_dict()})
         return render_template('sports.html', sports=mongo.db.sports.find())
     return render_template('edit_sport.html', sports=mongo.db.sports.find_one({'_id': ObjectId(sports_id)}))
 
