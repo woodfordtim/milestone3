@@ -4,16 +4,11 @@ from flask import Flask, render_template, redirect, request, url_for, request, s
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-if path.exists("env.py"):
+if os.path.exists("env.py"):
     import env
 
-#app is a variable (__name__) is a built in Flask variable. It needs this so it knows where to look for templates
+"""app is a variable; (__name__) is a built in Flask variable. It needs this so it knows where to look for templates"""
 app = Flask(__name__)
-
-if __name__ == "main":
-    app.run(host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=True)
 
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
@@ -24,32 +19,32 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def index(): #this is the index 'view'
+def index(): 
     return render_template("index.html")
 
-# function for page to display a list all events
+""" function for page to display a list all events """
 @app.route('/find_events')
 def find_events():
     events = list(mongo.db.events.find())
     return render_template("events.html", events=events)
 
 
-# function for form to add events
+""" function for form to add events """
 @app.route('/add_event')
 def add_event():
     return render_template('add_event.html', 
-    sports=mongo.db.sports.find()) # sports refers to Collection so must be accurate
+    sports=mongo.db.sports.find()) # 'sports' refers to Collection so must be accurate
 
 
-# function to sumbit a new event to form http method POST (default is GET) and create a new event
+""" function to sumbit a new event to form http method POST (default is GET) and create a new event """
 @app.route('/insert_event', methods=["GET", "POST"])
 def insert_event():
     events=mongo.db.events
     print(request.form.to_dict())
-    events.insert_one(request.form.to_dict()) #insert when you submit info to a uri it does so in a request object and then convert the form to dictionary so it can be understood by MongoDB
+    events.insert_one(request.form.to_dict()) #insert when you submit info to a uri it does so in a request object and then             convert the form to dictionary so it can be understood by MongoDB
     return redirect(url_for('find_events')) #redirect back to list of events page
 
-# function to enable user to edit event
+""" function to enable user to edit event """
 @app.route('/edit_event/<event_id>', methods=["GET", "POST"])
 def edit_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
@@ -155,8 +150,7 @@ def logon():
     return render_template('logon.html')
 
 
-
 if __name__ == '__main__': #__main__ is the name of the default module in Python
     app.run(host=os.environ.get('IP'),
-    port=int(os.environ.get('PORT')),
-    debug=True)
+        port=int(os.environ.get('PORT')),
+        debug=True)

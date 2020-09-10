@@ -24,20 +24,27 @@
                 </a>
                 <ul class="right blue-text hide-on-med-and-down">
                     <li><a href="{{url_for('find_events')}}"><i class="material-icons left valign-wrapper">emoji_events</i>FIND AN EVENT</a></li>
-                    <li><a href="{{url_for('add_event')}}"><i class="material-icons left">share</i>SHARE AN EVENT</a></li>
+                    <li><a href="{{url_for('add_event')}}"><i class="material-icons left">share</i>CREATE AN EVENT</a></li>
 				</ul>
                 <ul class="sidenav" id="mobile-demo">
 					<li><a href="{{url_for('find_events')}}"><i class="material-icons left">emoji_events</i>FIND AN EVENT</a></li>
-                    <li><a href="{{url_for('add_event')}}"><i class="material-icons left">share</i>SHARE AN EVENT</a></li>
+                    <li><a href="{{url_for('add_event')}}"><i class="material-icons left">share</i>CREATE AN EVENT</a></li>
 				</ul>
             </div>
         </nav>
     </header>
 
-
-    <div id="index-banner">
-		{% block content %}{% endblock %}
-	</div>
+  
+	{% block content %}{% endblock %}
+        
+    <!-- Footer -->
+	<footer class="page-footer blue darken-4  valign-wrapper">
+		<div class="container">
+			<div class="row ">
+				<p class="center">&copy; Developed by TW Web Design</p>
+			</div>
+		</div>
+	</footer>
 
 	<!--  General Scripts-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,7 +62,6 @@
              $('input#input_text, textarea#textarea2').characterCounter();
             $('select').formSelect();
             $('.sidenav').sidenav();
-            $('.parallax').parallax();
             $('.slider').slider();
             $(".datepicker").datepicker({
                 format: "dd mmm yyyy",
