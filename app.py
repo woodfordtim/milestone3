@@ -7,9 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-"""app is a variable; (__name__) is a built in Flask variable. It needs this so it knows where to look for templates"""
-app = Flask(__name__)
-
+app = Flask(__name__)  # (__name__) is a built in Flask variable
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGODB_NAME"] = os.environ.get('MONGODB_NAME')
@@ -19,7 +17,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def index(): 
+def index():
     return render_template("index.html")
 
 """ function for page to display a list all events """
@@ -33,30 +31,31 @@ def find_events():
 @app.route('/add_event')
 def add_event():
     return render_template('add_event.html', 
-    sports=mongo.db.sports.find()) # 'sports' refers to Collection so must be accurate
+        sports=mongo.db.sports.find())
 
 
-""" function to sumbit a new event to form http method POST (default is GET) and create a new event """
+""" sumbit a new event to form http method POST and create a new event """
 @app.route('/insert_event', methods=["GET", "POST"])
 def insert_event():
-    events=mongo.db.events
+    events = mongo.db.events
     print(request.form.to_dict())
-    events.insert_one(request.form.to_dict()) #insert when you submit info to a uri it does so in a request object and then             convert the form to dictionary so it can be understood by MongoDB
-    return redirect(url_for('find_events')) #redirect back to list of events page
+    events.insert_one(request.form.to_dict())  # insert in a request object and then convert the form to dictionary
+    return redirect(url_for('find_events'))  # redirect back to list of events page
 
-""" function to enable user to edit event """
+""" enable user to edit event """
 @app.route('/edit_event/<event_id>', methods=["GET", "POST"])
 def edit_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     all_sports = mongo.db.sports.find()
-    return render_template('edit_event.html', event=the_event, sports=all_sports)
+    return render_template('edit_event.html', 
+        event = the_event, sports=all_sports)
 
 
-# function to send edited data back to MongoDB and update database
+""" send edited data back to MongoDB and update database """
 @app.route('/update_event/<event_id>', methods=['POST']) 
 def update_event(event_id):
     events = mongo.db.events
-    events.update( {'_id': ObjectId(event_id)},
+    events.update({'_id': ObjectId(event_id)},
     {
         'event_name': request.form.get('event_name'),
         'sport_name': request.form.get('sport_name'),
@@ -72,33 +71,35 @@ def update_event(event_id):
         'img_url': request.form.get('img_url'),
         'description': request.form.get('description')
     })
-    return redirect(url_for('find_events')) #redirect back to list of events page
+    return redirect(url_for('find_events'))  # redirect back to list of events page
 
-# function allow deletion of events
+""" allow deletion of events """
 @app.route('/delete_event/<event_id>')
 def delete_event(event_id):
     mongo.db.events.remove({'_id': ObjectId(event_id)})
-    return redirect(url_for('find_events')) #redirect back to list of events page
+    return redirect(url_for('find_events'))  # redirect back to list of events page
     
 
-# function for page to display list all event types (i.e categories)
+""" display list of sports """
 @app.route('/find_sports')
 def find_sports():
     return render_template('sports.html', 
-    sports=mongo.db.sports.find()) #sports refers to for collection
+        sports=mongo.db.sports.find()) 
 
-# function take the user to editable page (a form)
-@app.route('/edit_sport/<sports_id>', methods=["GET", "POST"]) #'url for' points towards the name of a function, not the name of the route
-def edit_sport(sports_id): # sports_id as a parameter to search for document in db to feed edit into form
+""" edit a sport """
+@app.route('/edit_sport/<sports_id>', methods=["GET", "POST"]) 
+def edit_sport(sports_id):
     print(sports_id)
     if request.method == "POST":
         sports = mongo.db.sports.find_one({'_id': ObjectId(sports_id)})
         mongo.db.sports.update_one(sports, {"$set": request.form.to_dict()})
-        return render_template('sports.html', sports=mongo.db.sports.find())
-    return render_template('edit_sport.html', sports=mongo.db.sports.find_one({'_id': ObjectId(sports_id)}))
+        return render_template('sports.html', 
+            sports=mongo.db.sports.find())
+    return render_template('edit_sport.html', 
+        sports=mongo.db.sports.find_one({'_id': ObjectId(sports_id)}))
 
 
-# update is used to carry out the update to the database
+""" update sport in database """
 @app.route('/update_sport/<sports_id>', methods=['POST'])
 def update_sport(sports_id):
     print(sports_id)
@@ -107,33 +108,34 @@ def update_sport(sports_id):
         {'sport_name': request.form.get('sport_name')})
     return redirect(url_for('find_sports'))
 
-
+""" delete a sport """
 @app.route('/delete_sport/<sports_id>')
 def delete_sport(sports_id):
     mongo.db.sports.remove({'_id': ObjectId(sports_id)})
     return redirect(url_for('find_sports'))
 
-
+""" add new sport """
 @app.route('/insert_sport', methods=['POST'])
 def insert_sport():
-    sports=mongo.db.sports #access the mongo DB
-    sports_doc = {'sport_name': request.form.get('sport_name')} #'sports' refers to form field
-    sports.insert_one(sports_doc) #inserts new event type to data collection
-    return redirect(url_for('find_sports')) #redirects back to list of event_types
+    sports=mongo.db.sports  # access the mongo DB
+    sports_doc = {'sport_name': request.form.get('sport_name')} 
+    sports.insert_one(sports_doc)  # insert sport to data collection
+    return redirect(url_for('find_sports'))  # redirect back to list of sports
 
 
-# function to direct us and render the view that allows us to insert sport
+""" render view to add new sport """
 @app.route('/add_sport')
 def add_sport():
     return render_template('add_sport.html')
 
-
+""" view more info on event """
 @app.route('/view_event/<event_id>')
 def view_event(event_id):
     the_event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     return render_template('view_event.html', event=the_event)
 
 
+""" Logo on feature - new feature for next version """
 @app.route('/<username>')
 def user(username):
     return "Welcome, " + username
@@ -150,7 +152,7 @@ def logon():
     return render_template('logon.html')
 
 
-if __name__ == '__main__': #__main__ is the name of the default module in Python
+if __name__ == '__main__': # __main__ is the name of the default module in Python
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=True)
+            debug=True)
