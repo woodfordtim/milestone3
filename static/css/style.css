@@ -110,6 +110,7 @@ footer.page-footer {
     top: 10%;
   }
 
+ 
 /* media queries */ 
 @media screen and (max-width: 500px) {
     .banner {
@@ -120,6 +121,9 @@ footer.page-footer {
     }
     .call-to-action {
         visibility: hidden;
+    }
+    .card-image {
+        display: none;
     }
 }
 

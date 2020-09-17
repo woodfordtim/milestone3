@@ -8,6 +8,24 @@
 			<h2 class="title-text">{{event.event_name|replace('_', ' ')}}</h2>
 
 			<!-- Events description (full width card from Materialize) -->
+<div class="col s12 m7">
+    <h2 class="header">Horizontal Card</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 			<div class="card horizontal">
 				<div class="card-stacked">
 					<div class="card-content">
@@ -20,42 +38,39 @@
 				</div>
 				<div class="card-image valign-wrapper">
 					{% if event.img_url %}
-					<img class="user-image" src="{{event.img_url}}" alt="static/img/baseline_camera_alt_black_18dp.png">
-                            {% else %}
-					<img class="user-image" src ="static/img/bike.jpg">
-                        {% endif %}
+					<img class="user-image" src = "{{event.img_url}}" alt="static/img/baseline_camera_alt_black_18dp.png">
                 </div>
 			</div>
 
-				<!-- Events information (half-width) -->
-				<div class="row">
-					<div class="col s12 m6">
-						<div class="card-panel">
+				
+            <div class="row">
+                <!-- Events information  -->
+                <div class="col s12 m6">
+                    <div class="card-panel">
 
-							<h3><strong>Event Information</strong></h3>
+                        <h3><strong>Event Information</strong></h3>
 
-							<p><strong>Event Date:</strong> {{event.event_date}}</p>
-							<p><strong>Sport:</strong> {{event.sport_name}}</p>
-							<p><strong>Distance:</strong> {{event.event_distance}}</p>
-							<p><strong>Location:</strong> {{event.location}}</p>
-							<p><strong>Coordinates:</strong> {{event.event_coordinates}}</p>
-							<p><strong>Cost:</strong> {{event.cost}}</p>
+                        <p><strong>Event Date:</strong> {{event.event_date}}</p>
+                        <p><strong>Sport:</strong> {{event.sport_name}}</p>
+                        <p><strong>Distance:</strong> {{event.event_distance}}</p>
+                        <p><strong>Location:</strong> {{event.location}}</p>
+                        <p><strong>Coordinates:</strong> {{event.event_coordinates}}</p>
+                        <p><strong>Cost:</strong> {{event.cost}}</p>
 
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- Events contacts (half-width) -->
-					<div class="col s12 m6">
-						<div class="card-panel">
+                <!-- Events contacts  -->
+                <div class="col s12 m6">
+                    <div class="card-panel">
 
-							<h3><strong>Event Contacts</strong></h3>
-							<p><strong>Email:</strong> {{event.event_contacts}}</p>
-							<p><strong>Web:</strong> {{event.link}}</p>
+                        <h3><strong>Event Contacts</strong></h3>
+                        <p class="truncate"><strong>Email:</strong> {{event.event_contacts}}</p>
+                        <p class="truncate"><strong>Web:</strong> {{event.link}}</p>
 
-						</div>
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
 
 			<!-- Events map -->
 			<div class="col s12">
@@ -77,6 +92,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	{% endblock %}
 

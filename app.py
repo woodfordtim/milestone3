@@ -135,24 +135,7 @@ def view_event(event_id):
     return render_template('view_event.html', event=the_event)
 
 
-""" Logo on feature - new feature for next version """
-@app.route('/<username>')
-def user(username):
-    return "Welcome, " + username
-
-@app.route('/logon', methods = ["GET", "POST"])
-def logon():
-
-    if request.method  == "POST":
-        session["username"] = request.form["username"]
-
-    if "username" in session:
-        return redirect(session["username"])
-    
-    return render_template('logon.html')
-
-
 if __name__ == '__main__': # __main__ is the name of the default module in Python
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)  # add to env on next commit
