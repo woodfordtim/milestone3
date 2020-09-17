@@ -59,7 +59,7 @@
     }).addTo(mymap);
 
         {% for event in events %}
-            var marker = L.marker([{{event.event_coordinates}}]).addTo(mymap).bindPopup('<a href="{{ url_for('view_event', event_id=event._id) }}">{{event.event_name}}</a>');
+            var marker = L.marker([{{event.event_coordinates}}]).addTo(mymap).bindPopup('<a href="{{ url_for('find_events', event_id=event._id) }}">{{event.event_name}}</a>');
 
             if ( {{event.event_coordinates}} ) {
                 marker;
