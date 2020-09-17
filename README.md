@@ -77,6 +77,10 @@ All buttons on the home page redirect you to the correct page.
 ### Device Testing
 The application loads well on all three devices testes, which include iPhone 11, iPad Pro (9 inch version), Windows laptop.
 
+Basic automated testing has been set up in the test_events.py as a starting point. This follows the Python unittest framework, which can be found here:
+
+[Python Unittest](https://docs.python.org/3/library/unittest.html)
+
 ## Bugs and Problems
 ### Getting the map to show each event on the view_event page
 There cannot be any events with missing or incorrect coordinates or the site will not load the map for any event. To fix this issue ensure 'coordinates is a required field in the forms.
@@ -104,9 +108,9 @@ Then, open up a new terminal in your IDE and type 'git clone' followed directly 
 * Add pop-up to warns users if they are about to delete an event so they do not lose data.
 * Ensure redirection from 'Sports' categories returns to the event rather the 'find_events' page.
 * Add banner image to improve styling on each page (as per wireframe).
-* Add testing file to test features of the application.
 * Add a search and/or filter feature so that events can be located by the users more efficiently.
 * Add a log-in feature for authorisation and authentification to be able to prevent unwanted or mailicious loss of data.
+* Add further validation for the form in order to prevent duplication and incorrect entries.
 
 
 ## Credits

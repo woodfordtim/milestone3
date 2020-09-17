@@ -12,7 +12,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">emoji_events</i>
-					<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate">
+					<input placeholder="Event Name" id="event_name" name="event_name" type="text" class="validate" maxlength= "50">
 					<label for="event_name">Event Name</label>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">directions_bike</i>
-					<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate">
+					<input placeholder="Distance(s)" id="event_distance" name="event_distance" type="text" class="validate" required>
 					<label for="event_distance">Event Distance(s)</label>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">event</i>
-					<input type="text" id="event_date" class="datepicker" name="event_date">
+					<input type="text" id="event_date" class="datepicker" name="event_date" required>
 					<label for="event_date">Date of Event</label>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 			<div class="row">
 				<div class="input-field col s12 m6">
 					<i class="material-icons prefix">add_location</i>
-					<input placeholder="Location" id="location" type="text" class="validate" name="location">
+					<input placeholder="Location" id="location" type="text" class="validate" name="location" required>
 					<label for="location">Location</label>
 				</div>
 
@@ -78,7 +78,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">insert_link</i>
-					<input placeholder="https://" id="link" type="text" class="validate" name="link">
+					<input placeholder="https://" id="link" type="text" class="validate" name="link" required>
 					<label for="link">Link to Event Website</label>
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">mail</i>
-					<input placeholder="email address" id="event_contacts" type="email" class="validate" name="event_contacts">
+					<input placeholder="email address" id="event_contacts" type="email" class="validate" name="event_contacts" required>
 					<label for="event_contacts">Contact Email</label>
 				</div>
 			</div>
@@ -105,7 +105,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">details</i>
-					<textarea name="description" id="description" class="materialize-textarea"  data-length="100"></textarea>
+					<textarea name="description" id="description" class="materialize-textarea"  maxlength="800"></textarea>
 					<label for="description">Description of Event</label>
 				</div>
 			</div>
@@ -127,6 +127,10 @@
 					<label for="img_url">Image URL</label>
 				</div>
 			</div>
+
+            <div class="row">
+                <p>IMPORTANT NOTE: To add an image to your description head to a web-page where your image is stored, right click and 'copy image address'. Then just past that into the box above.</p>
+            </div>
 
 			<!-- Button to Create Event -->
 			<div class="row center-align">
