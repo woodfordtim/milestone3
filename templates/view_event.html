@@ -7,25 +7,21 @@
 			<!-- Using the JS replace method:  https://www.w3schools.com/jsref/jsref_replace.asp -->
 			<h2 class="title-text">{{event.event_name|replace('_', ' ')}}</h2>
 
-			<!-- Events description (full width card from Materialize) -->
-			<div class="card horizontal">
-				<div class="card-stacked">
-					<div class="card-content">
-						<h3><strong>Event Description</strong></h3>
-						<p>{{event.description}}</p>
-					</div>
-					<div class="card-action">
-						<a href=" blue-text text-darken-2 {{event.link}}">Find out more</a>
-					</div>
-				</div>
-				<div class="card-image valign-wrapper">
-					{% if event.img_url %}
-					<img class="user-image" src="{{event.img_url}}" alt="static/img/baseline_camera_alt_black_18dp.png">
-                            {% else %}
-					<img class="user-image" src ="static/img/bike.jpg">
-                        {% endif %}
+                <!-- Events description (full width card from Materialize) -->
+                <div class="card horizontal">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h3><strong>Event Description</strong></h3>
+                            <p>{{event.description}}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{event.link}}">Find out more</a>
+                        </div>
+                    </div>
+                    <div class="card-image valign-wrapper">
+                        <img class="user-image" src="{{event.img_url}}" alt="static/img/baseline_camera_alt_black_18dp.png">
+                    </div>
                 </div>
-			</div>
 
 				<!-- Events information (half-width) -->
 				<div class="row">
@@ -76,8 +72,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
+</div>
 
 	{% endblock %}
 
